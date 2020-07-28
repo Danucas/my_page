@@ -59,6 +59,20 @@ function detectMob() {
         return navigator.userAgent.match(toMatchItem);
     });
 }
+function tracker(evn) {
+	const cont = document.getElementsByClassName('container')[0];
+	// console.log(evn.pageX, evn.pageY);
+	const height = cont.offsetHeight;
+	const yOffset = Math.round((evn.pageY * 100) / height);
+	// console.log(yOffset);
+	let radius = Math.round(((screen.width / 2) * yOffset) / 100);
+	if (evn.pageY < 600) {
+		radius += 80;
+	}
+	if (yOffset > 1) {
+		cont.style.clipPath = `circle(${radius}px at ${evn.pageX}px ${evn.pageY}px)`;
+	}	
+}
 
 window.onload = async function() {
 	// Controls the focus effect
@@ -83,20 +97,7 @@ window.onload = async function() {
 	if (detectMob() === false) {
 		const cont = document.getElementsByClassName('container')[0];
 		cont.style.clipPath = `circle(${20}px at ${0}px ${0}px)`;
-		window.addEventListener('mousemove', function (evn) {
-			const cont = document.getElementsByClassName('container')[0];
-			// console.log(evn.pageX, evn.pageY);
-			const height = cont.offsetHeight;
-			const yOffset = Math.round((evn.pageY * 100) / height);
-			// console.log(yOffset);
-			let radius = Math.round(((screen.width / 2) * yOffset) / 100);
-			if (evn.pageY < 600) {
-				radius += 80;
-			}
-			if (yOffset > 1) {
-				cont.style.clipPath = `circle(${radius}px at ${evn.pageX}px ${evn.pageY}px)`;
-			}	
-		});
+		window.addEventListener('mousemove', tracker);
 	}
 	window.addEventListener('scroll', function (evn) {
 		// console.log(evn);
@@ -105,7 +106,7 @@ window.onload = async function() {
 		const height = screen.height;
 		soMedia.style.top = (window.scrollY) + 'px';
 		if (window.scrollY > height - 80) {
-			name.style.display = 'block';
+			name.style.display = 'flex';
 			name.style.top = (window.scrollY) + 'px';
 		} else {
 			name.style.display = 'none';
@@ -123,6 +124,22 @@ window.onload = async function() {
 		window.open('Daniel_Rodriguez_Resume.pdf', '_blank')
 	});
 	startHeadAnimation();
+	let hidden = true;
+	// reveal hide 
+	const revealHideBtn = document.querySelector('.name button');
+	revealHideBtn.addEventListener('click', function (evn) {
+		if (hidden) {
+			window.removeEventListener('mousemove', tracker);
+			cont.style.clipPath = '';
+			revealHideBtn.innerHTML = 'HIDDE';
+			hidden = false;
+		} else {
+			window.addEventListener('mousemove', tracker);
+			revealHideBtn.innerHTML = 'REVEAL';
+			cont.style.clipPath = `circle(${400}px at ${300}px ${0}px)`;
+			hidden = true;
+		}
+	});
 }
 function openSocialMedia(link) {
 	window.open(link, '_blank');
