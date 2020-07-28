@@ -9,10 +9,16 @@
 	</head>
 	<div class="name">Daniel Rodriguez</div>
 	<div class="social_media">
-		<button style="filter: invert();background-image: url(linkedin.png);"></button>
-		<button style="filter: invert();background-image: url(github_logo.png);"></button>
-		<button style="filter: invert();background-image: url(twitter.png);"></button>
-		<button style="filter: invert();background-image: url(sourcerer.png);"></button>
+		<button style="filter: invert();
+					   background-image: url(linkedin.png);"
+				onclick="openSocialMedia('https://www.linkedin.com/in/Danucas/')"></button>
+		<button style="filter: invert();
+					   background-image: url(github_logo.png);"
+					   onclick="openSocialMedia('https://github.com/Danucas/')"></button>
+		<button style="filter: invert();background-image: url(twitter.png);"
+					   onclick="openSocialMedia('https://twitter.com/Danucas1')"></button>
+		<button style="filter: invert();background-image: url(sourcerer.png);"
+					   onclick="openSocialMedia('https://sourcerer.io/danucas')"></button>
 	</div>
 	<div class="container clip">
 		<div class="head_cont">
@@ -21,7 +27,7 @@
 			<br>Software Engineer</h1>
 			<button presentation="play"></button>
 		</div>
-		<div class="features">
+		<div class="features about">
 			<div style="display: flex;">
 				<div>
 					<h1>About me</h1>
@@ -31,6 +37,7 @@
 						Among my tastes are the design of scalable architectures, layouts and systems to create things that live on the internet, and brings users the useful solutions they need.
 					</p>
 					<button class="resume">View Resume</button>
+					<canvas pdf="true"></canvas>
 				</div>
 				<div class="profile_pic"></div>
 			</div>
@@ -65,7 +72,7 @@
 			<h1>Projects</h1>
 			<ul>
 				<li style="list-style: none;">
-					<h1><span style="font-size: 14px; color: #9900ff;">
+					<h1"><span style="font-size: 14px; color: #9900ff;">
 						Featured project</span>
 						<br>DataInMotion &nbsp;<a target="_blank"href="https://dnart.tech" style="color: #c977ff;">Demo</a>
 						&nbsp;<a target="_blank"href="https://github.com/alejolo311/DataInMotion" style="color: #2db4dd;">Repo</a></h1>
@@ -75,7 +82,23 @@
 							   font-weight: lighter;
 							   font-size: 14px;
 							   color: rgb(204, 117, 204);">Flask &nbsp;Python &nbsp;Javascript</h2>
-					<div style="background-image: url(datainmotion.png);"></div>
+					<div style="background-image: url(datainmotion.png);"
+							onclick="openSocialMedia('https://dnart.tech')"></div>
+
+				</li>
+				<li style="list-style: none; margin-top: -160px;">
+					<h1 style="padding-right: 0;position:relative;z-index:12;width: 50%; margin-left: 64%; text-align: right;"><span style="font-size: 14px; color: #9900ff;">
+						Featured project</span>
+						<br>Chi.pa API &nbsp;<a target="_blank"href="https://dnart.tech" style="color: #c977ff;">Demo</a>
+						&nbsp;<a target="_blank"href="https://github.com/alejolo311/DataInMotion" style="color: #2db4dd;">Repo</a></h1>
+					<p style="margin-left: 56%;">An API service to fetch information about violence records in Cali, Colombia
+					</p>
+					<h2 style="font-family: monospace;
+							   font-weight: lighter;
+							   font-size: 14px;
+							   color: rgb(204, 117, 204);">Flask &nbsp;Python &nbsp;Javascript</h2>
+					<div style="background-image: url(datainmotion.png); left: 0;"
+							onclick="openSocialMedia('https://dnart.tech')"></div>
 
 				</li>
 			</ul>

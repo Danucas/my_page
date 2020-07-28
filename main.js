@@ -44,6 +44,21 @@ async function startHeadAnimation() {
 		}
 	}
 }
+function detectMob() {
+    const toMatch = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i
+    ];
+
+    return toMatch.some((toMatchItem) => {
+        return navigator.userAgent.match(toMatchItem);
+    });
+}
 
 window.onload = async function() {
 	// Controls the focus effect
@@ -64,17 +79,22 @@ window.onload = async function() {
 	// 	el.remove();
 	// }
 	// bubble focuser
-	window.addEventListener('mousemove', function (evn) {
+	console.log(detectMob());
+	if (detectMob() === false) {
 		const cont = document.getElementsByClassName('container')[0];
-		// console.log(evn.pageX, evn.pageY);
-		const height = cont.offsetHeight;
-		const yOffset = Math.round((evn.pageY * 100) / height);
-		// console.log(yOffset);
-		const radius = Math.round(((screen.width / 2) * yOffset) / 100);
-		if (yOffset > 1) {
-			cont.style.clipPath = `circle(${radius}px at ${evn.pageX}px ${evn.pageY}px)`;
-		}	
-	});
+		cont.style.clipPath = `circle(${0}px at ${0}px ${0}px)`;
+		window.addEventListener('mousemove', function (evn) {
+			const cont = document.getElementsByClassName('container')[0];
+			// console.log(evn.pageX, evn.pageY);
+			const height = cont.offsetHeight;
+			const yOffset = Math.round((evn.pageY * 100) / height);
+			// console.log(yOffset);
+			const radius = Math.round(((screen.width / 2) * yOffset) / 100);
+			if (yOffset > 1) {
+				cont.style.clipPath = `circle(${radius}px at ${evn.pageX}px ${evn.pageY}px)`;
+			}	
+		});
+	}
 	window.addEventListener('scroll', function (evn) {
 		// console.log(evn);
 		const soMedia = document.getElementsByClassName('social_media')[0];
@@ -94,5 +114,13 @@ window.onload = async function() {
 	playBtn.addEventListener('click', function () {
 		audio.play();
 	})
+	// Resume
+	const resBtn = document.querySelector("button[class=resume]");
+	resBtn.addEventListener('click', async function () {
+		window.open('Daniel_Rodriguez_Resume.pdf', '_blank')
+	});
 	startHeadAnimation();
+}
+function openSocialMedia(link) {
+	window.open(link, '_blank');
 }

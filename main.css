@@ -2,9 +2,9 @@
 	--back-color: rgb(29, 23, 32);
 	--font: 'Baloo Da 2', cursive;
 }
-.clip {
+/* .clip {
 	clip-path: circle(200px at 100px 100px);
-}
+} */
 body::-webkit-scrollbar {
 	width: 4px;
 	height: 0px;
@@ -141,9 +141,9 @@ h1 {
 	width: calc(100% - 440px);
 	margin: 0;
 	background-color: var(--back-color);
-	padding: 100px 220px 10px 220px;
+	padding: 100px 15% 10px 15%;
 }
-p {
+.about p {
 	color: white;
 	width: 80%;
 	font-size: 18px;
@@ -207,7 +207,7 @@ p {
 	 padding: 10px;
  }
  .projects {
-	padding: 60px 160px;
+	padding: 60px 10%;
  }
  .projects ul {
 	margin: 0;
@@ -215,13 +215,13 @@ p {
  }
  .projects li {
  }
- .projects li > p {
+ .projects p {
 	 position: relative;
 	 width: 52%;
 	 font-size: 16px;
 	 line-height: 17px;
 	 background-color: rgb(63, 43, 82);
-	 padding: 20px;
+	 padding: 20px 26px;
 	 z-index: 20;
  }
  .projects li > h1 {
