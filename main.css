@@ -1,0 +1,250 @@
+:root {
+	--back-color: rgb(29, 23, 32);
+	--font: 'Baloo Da 2', cursive;
+}
+.clip {
+	clip-path: circle(200px at 100px 100px);
+}
+body::-webkit-scrollbar {
+	width: 4px;
+	height: 0px;
+	background-color: rgb(233, 239, 250);
+}
+body::-webkit-scrollbar-thumb {
+	background-color: #9900ff;
+	border-radius: 4px;
+}
+body {
+	margin: 0;
+	padding: 0;
+	background-color: var(--back-color);
+	overflow-x: hidden;
+	font-family: var(--font);
+	color: white;
+	-webkit-user-select: none;  
+	-moz-user-select: none;    
+	-ms-user-select: none;      
+	user-select: none;
+}
+.name {
+	display: none;
+	padding-left: 20px;
+	position: absolute;
+	top: 0;
+	color: rgb(153, 0, 255);
+	width: 100%;
+	font-size: 40px;
+	left: 60px;
+	font-weight: bold;
+	background-color: var(--back-color);
+	opacity: 1;
+	z-index: 10;
+
+}
+.social_media {
+	display: block;
+	max-width: 40px;
+	position: absolute;
+	z-index: 10;
+	height: 400px;
+	left: 0;
+	border-radius: 0 18px 0 0;
+	padding: 10px;
+
+}
+.social_media button {
+	border: none;
+	background-color: transparent;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 20px;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	outline: none;
+}
+.social_media button:hover {
+	background-size: 24px;
+}
+.container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-size: cover;
+	height: auto;
+	/* filter: blur(20px); */
+	z-index: 1;
+}
+.fake-container {
+	filter: blur(8px);
+	z-index: 0;
+}
+h1 {
+	color: white;
+}
+.head_cont {
+	width: 100%;
+	margin: 0;
+	height: 100%;
+	background-color: var(--back-color);
+	margin-bottom: 700px;
+}
+.head_cont h1 {
+	position: absolute;
+	width: 100%;
+	font-size: 46px;
+	text-align: center;
+	top: 260px;
+	color: white;
+	z-index: 3;
+	
+}
+[presentation="play"] {
+	background-image: url(play.png);
+	background-position: center;
+	background-size: 30px;
+	background-repeat: no-repeat;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background-color: transparent;
+	border: 3px solid white;
+	padding: 4px;
+	outline: none;
+	position: absolute;
+	top: 460px;
+	cursor: pointer;
+	left: calc(50% - 30px);
+	z-index: 10;
+	/* clip-path: polygon(0px 0px, 20px 10px, 0px 20px, 0px 0px); */
+}
+[presentation="play"]:hover {
+	border: 2px solid white;
+	background-size: 34px;
+	background-color: rgba(255, 255, 255, 0.205);
+}
+[presentation="play"]:active {
+	background-color: rgba(128, 0, 128, 0.287);
+}
+.head_canvas {
+	z-index: 2;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background-color: var(--back-color);
+	filter: blur(0px);
+}
+.features {
+	width: calc(100% - 440px);
+	margin: 0;
+	background-color: var(--back-color);
+	padding: 100px 220px 10px 220px;
+}
+p {
+	color: white;
+	width: 80%;
+	font-size: 18px;
+	text-align: justify;
+	text-justify: inter-word;
+}
+.resume {
+	font-family: var(--font);
+	border-radius: 12px;
+	border: none;
+	background-color: rgb(153, 0, 255);
+	color: white;
+	font-size: 16px;
+	cursor: pointer;
+	padding: 8px;
+	outline: none;
+}
+.resume:hover {
+	background-color: rgb(187, 85, 255);
+}
+.resume:active {
+	background-color: rgb(99, 13, 156);
+}
+.profile_pic {
+	border-radius: 50%;
+	width: 300px;
+	height: 300px;
+	min-width: 300px;
+	min-height: 300px;
+	filter: grayscale();
+	background-image: url(profile.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	cursor: pointer;
+}
+.profile_pic:hover {
+	filter: none;
+}
+
+ a:link {
+	 color: red;
+ }
+ .technologies ul {
+	 display: grid;
+	 border-radius: 12px;
+	 background-color: rgba(187, 187, 187, 0.37);
+	 grid-template-columns: repeat(5, 20%);
+ }
+ .technologies li {
+	 list-style: none;
+ }
+ .technologies li > h2 {
+	 background-color: white;
+	 border-radius: 12px;
+	 background-size: 60px;
+	 background-position: center;
+	 background-repeat: no-repeat;
+	 height: 80px;
+	 width: 80px;
+	 padding: 10px;
+ }
+ .projects {
+	padding: 60px 160px;
+ }
+ .projects ul {
+	margin: 0;
+	padding: 0;
+ }
+ .projects li {
+ }
+ .projects li > p {
+	 position: relative;
+	 width: 52%;
+	 font-size: 16px;
+	 line-height: 17px;
+	 background-color: rgb(63, 43, 82);
+	 padding: 20px;
+	 z-index: 20;
+ }
+ .projects li > h1 {
+	 font-size: 20px;
+ }
+ .projects div {
+	 border-radius: 6px;
+	 position: relative;
+	 top: -260px;
+	 left: 54%;
+	 width: 540px;
+	 height: 380px;
+	 background-color: red;
+	 background-size: cover;
+	 background-position: center;
+	 background-repeat: no-repeat;
+	 filter: blur(3px);
+	 cursor: pointer;
+	 z-index: 10;
+ }
+ .projects div:hover {
+	filter: none;
+}
+.projects div:active {
+	filter: brightness(120%);
+}
