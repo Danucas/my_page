@@ -175,6 +175,7 @@ h1 {
 }
 .about p {
 	color: white;
+	min-height: 280px;
 	width: 80%;
 	font-size: 18px;
 	text-align: justify;
