@@ -111,11 +111,11 @@ h1 {
 	color: white;
 }
 .head_cont {
+	position: relative;
 	width: 100%;
 	margin: 0;
 	height: 100%;
 	background-color: var(--back-color);
-	margin-bottom: 700px;
 }
 .head_cont h1 {
 	position: absolute;
@@ -126,6 +126,10 @@ h1 {
 	color: white;
 	z-index: 3;
 	
+}
+.head_cont span {
+	font-size: 50px;
+	color: #9900ff;
 }
 [presentation="play"] {
 	background-image: url(play.png);
@@ -203,7 +207,7 @@ h1 {
 	background-image: url(dan.png);
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: 500px;
+	background-size: contain;
 	cursor: pointer;
 	background-color: red;
 }
@@ -274,4 +278,37 @@ h1 {
 }
 .projects div:active {
 	filter: brightness(120%);
+}
+
+@media only screen and (max-device-width : 640px) {
+	/* Styles */
+
+}
+	
+@media only screen and (max-device-width: 768px) {
+	/* Styles */
+	.head_cont h1{
+		font-size: 6vw;
+	}
+	.head_cont span {
+		font-size: 7vw;
+	}
+	[presentation="play"] {
+		width: 16vw;
+		height: 16vw;
+		background-size: 10vw;
+		border: 10px solid white;
+		left: calc(50% - 8vw);
+
+	}
+	.features {
+		padding: 6vw;
+		margin: 0;
+	}
+	.features div {
+		width: 100%;
+	}
+	.features p {
+		width: 100%;
+	}
 }
