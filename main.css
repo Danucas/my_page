@@ -175,6 +175,7 @@ h1 {
 }
 .about {
 	min-height: 280px;
+	margin-top: 500px;
 }
 .about p {
 	color: white;
