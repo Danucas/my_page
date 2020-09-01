@@ -173,9 +173,11 @@ h1 {
 	background-color: var(--back-color);
 	padding: 100px 15% 10px 15%;
 }
+.about {
+	min-height: 280px;
+}
 .about p {
 	color: white;
-	min-height: 280px;
 	width: 80%;
 	font-size: 18px;
 	text-align: justify;
