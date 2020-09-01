@@ -207,7 +207,7 @@ h1 {
 	background-image: url(dan.png);
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: contain;
+	background-size: 300px;
 	cursor: pointer;
 	background-color: red;
 }
