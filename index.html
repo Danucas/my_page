@@ -1,25 +1,71 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Home | Daniel Rodriguez</title>
+		<title>Danucas | Daniel Rodriguez</title>
 		<link rel="stylesheet" href="main.css">
-		<link rel='icon' href='favicon.ico' type='image/x-icon'/ >
+		<link rel='icon' href='favicon.ico' type='image/x-icon'/>
 		<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap" rel="stylesheet">
-		<script src="main.js"></script>
 	</head>
-	<div class="name"><h1>Daniel Rodriguez</h1><button>REVEAL</button></div>
-	<div class="social_media">
-		<button style="filter: invert();
-					   background-image: url(linkedin.png);"
-				onclick="openSocialMedia('https://www.linkedin.com/in/Danucas/')"></button>
-		<button style="filter: invert();
-					   background-image: url(github_logo.png);"
-					   onclick="openSocialMedia('https://github.com/Danucas/')"></button>
-		<button style="filter: invert();background-image: url(twitter.png);"
-					   onclick="openSocialMedia('https://twitter.com/Danucas1')"></button>
-		<button style="filter: invert();background-image: url(sourcerer.png);"
-					   onclick="openSocialMedia('https://sourcerer.io/danucas')"></button>
+<body>
+	<canvas id="background_canvas"></canvas>
+	<div id="slider_container">
+		<div id="content_menu">
+			<ul>
+				<li>Home</li>
+				<li>About me</li>
+				<li>Portfolio</li>
+				<li>Contact</li>
+			</ul>
+		</div>
+		<div id="head_container">
+			<div id="head_name">
+				<h1>Hello, I'm <span style="color: #9c7ee2;">Daniel Rodriguez.</span>
+				<br>Software Engineer</h1>
+			</div>
+			<div class="social_media">
+				<button style="filter: invert();
+							   background-image: url(linkedin.png);"
+						onclick="openSocialMedia('https://www.linkedin.com/in/Danucas/')"></button>
+				<button style="filter: invert();
+							   background-image: url(github_logo.png);"
+							   onclick="openSocialMedia('https://github.com/Danucas/')"></button>
+				<button style="filter: invert();background-image: url(twitter.png);"
+							   onclick="openSocialMedia('https://twitter.com/Danucas1')"></button>
+				<button style="filter: invert();background-image: url(sourcerer.png);"
+							   onclick="openSocialMedia('https://sourcerer.io/danucas')"></button>
+			</div>
+		</div>
+		
+		<div id="about">
+			<div class="flex-box">
+				<div>
+					<h2>About me</h2>
+					<p>I'm a Full-Stack Software Engineer based on Cali, Colombia.<br>
+						I graduated from the 
+						<a target="_blank"
+							style="color: rgb(245, 126, 126); text-decoration: none;"
+							href="https://www.holbertonschool.com/">
+							<span style="color: rgb(245, 126, 126); font-weight: bolder;">Holberton School</span>
+						</a> program, wich is a project based training driven by self and peer learning methodology.
+						<br>
+						Among my tastes are the design of scalable architectures, layouts and systems to create things that live on the internet, and brings users the useful solutions they need.
+					</p>
+					<button class="resume">View Resume</button>
+				</div>
+				<div>
+					<canvas id="skills_canvas"></canvas>
+				</div>
+			</div>
+		</div>
+		<div id="portfolio">
+
+		</div>
+		<div id="contact">
+
+		</div>
 	</div>
+	<!-- <div class="name"><h1>Daniel Rodriguez</h1><button>REVEAL</button></div>
+	
 	<div class="container clip">
 		<div class="head_cont">
 			<canvas class="head_canvas"></canvas>
@@ -28,18 +74,7 @@
 			<button presentation="play"></button>
 		</div>
 		<div class="features about">
-			<div style="display: flex;">
-				<div>
-					<h1>About me</h1>
-					<p>I'm a Full-Stack Software Engineer based on Cali, Colombia.<br>
-						I graduated from the <a target="_blank" style="color: rgb(245, 126, 126);" href="https://www.holbertonschool.com/"><span>Holberton School</span></a> program, wich is a project based training driven by self and peer learning methodology.
-						<br>
-						Among my tastes are the design of scalable architectures, layouts and systems to create things that live on the internet, and brings users the useful solutions they need.
-					</p>
-					<button class="resume">View Resume</button>
-				</div>
-				<div class="profile_pic"></div>
-			</div>
+			
 		</div>
 		<div class="features technologies">
 			<h1>Technologies I've been working with</h1>
@@ -130,5 +165,7 @@
 		
 	</div>
 	<div class="fake-container container">
-	</div>
+	</div> -->
+	<script src="main.js"></script>
+</body>
 </html>
