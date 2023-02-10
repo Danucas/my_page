@@ -1,0 +1,217 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+    background-color: black;
+}
+
+.accent {
+    color: rgb(156, 126, 226);
+}
+#container {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: calc(100vw + 10px);
+    height: 100vh;
+    max-width: calc(100vw + 10px);
+    max-height: 100vh;
+    overflow: hidden;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#background_canvas {
+    width: calc(100vw + 10px);
+    height: 100vh;
+    max-width: calc(100vw + 10px);
+    max-height: 100vh;
+	margin: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: rgb(0, 0, 0);
+}
+
+#head_name {
+	margin-top: calc(50vh - 80px);
+	font-size: 30px !important;
+	position: relative;
+	width: 100vw;
+	text-align: center;
+    color: white;
+	text-shadow: 0px 0px 20px black;
+}
+
+.social_media {
+	width: 100vw;
+	align-content: center;
+	display: flex;
+	z-index: 10;
+	border-radius: 0 18px 0 0;
+	padding-left: calc(50vw - 85px);
+}
+.social_media button {
+	border: none;
+	background-color: transparent;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 30px;
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	outline: none;
+}
+.social_media button:hover {
+	background-size: 36px;
+}
+
+#content_menu {
+	position: absolute;
+	bottom: 0;
+	padding: 0;
+	margin: 0;
+}
+
+#content_menu ul {
+	bottom: 0;
+	margin: 0;
+	padding: 0;
+	padding-left: 20vw;
+	display: flex;
+	padding-bottom: 40px;
+}
+
+#content_menu li {
+	cursor: pointer;
+	text-align: center;
+	list-style: none;
+	width: 15vw;
+	font-size: 20px;
+	text-transform: uppercase;
+	border-radius: 6px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#content_menu li:hover {
+	background-color: rgba(255, 255, 255, 0.815);
+	backdrop-filter: blur(5px);
+	color: rgb(95, 64, 167);
+}
+
+.about {
+    position: absolute;
+    height: 70vh;
+    top: 6vw;
+    left: 10vw;
+    display: grid;
+    backdrop-filter: blur(2px);
+    grid-template-columns: 40vw 40vw;
+    background-color: transparent;
+}
+.about h2 {
+    text-align: center;
+}
+.about p {
+	color: white;
+	width: 80%;
+	font-size: 18px;
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+.profile-description img {
+    width: 200px;
+    margin-left: calc(50% - 100px);
+    border-radius: 2px;
+    border-top: 6px solid white;
+    border-left: 6px solid white;
+    border-right: 6px solid white;
+    border-bottom: 50px solid white;
+}
+
+.skill-badges {
+    position: relative;
+}
+
+.cluster {
+	position: absolute;
+	width: 80px;
+	max-width: 80px;
+	height: 80px;
+	max-height: 46px;
+	background-color: white;
+	color: #9900ff;
+	text-align: center;
+	align-items: center;
+	border-radius: 50%;
+	padding-top: 34px;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.cluster:hover {
+	background-color: #9900ff;
+	color: white;
+}
+
+@keyframes cluster-animation {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.child {
+    animation-name: cluster-animation;
+    animation-duration: 1600ms;
+    animation-direction: normal;
+    animation-iteration-count: 1;
+    position: absolute;
+    width: 45px;
+    max-width: 45px;
+    height: 45px;
+    max-height: 11px;
+    background-position: center;
+    background-size: 66%;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+    padding-top: 34px;
+    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0.887);
+}
+
+.child h1 {
+    font-size: 14px;
+    width: 150px;
+    text-align: center;
+    position: absolute;
+    bottom: -34px;
+    left: -53px;
+}
+
+.tooltip {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 80px;
+    background-color: white;
+    color: #9900ff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 3px;
+    font-size: 12px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}

@@ -61,7 +61,6 @@ function detectMob() {
 }
 function tracker(evn) {
 	const cont = document.getElementsByClassName('container')[0];
-	// console.log(evn.pageX, evn.pageY);
 	const height = cont.offsetHeight;
 	const yOffset = Math.round((evn.pageY * 100) / height);
 	// console.log(yOffset);
@@ -71,72 +70,23 @@ function tracker(evn) {
 	}
 	if (yOffset > 1) {
 		cont.style.clipPath = `circle(${radius}px at ${evn.pageX}px ${evn.pageY}px)`;
-	}	
+	}
 }
 
-/* window.onload = async function() {
-	// Controls the focus effect
-	const cont = document.getElementsByClassName('container')[0];
-	const canvas = document.getElementsByClassName('head_canvas')[0];
-	const head_cont = document.getElementsByClassName('head_cont')[0];
-	const features = document.getElementsByClassName('features')[0];
-	features.style.marginTop = screen.height;
-	head_cont.style.height = screen.height;
-	canvas.style.height = screen.height;
-	canvas.height = screen.height;
-	canvas.width = screen.width;
-
-	if (detectMob() === false) {
-		const cont = document.getElementsByClassName('container')[0];
-		cont.style.clipPath = `circle(${20}px at ${0}px ${0}px)`;
-		window.addEventListener('mousemove', tracker);
-	}
-	window.addEventListener('scroll', function (evn) {
-		// console.log(evn);
-		const soMedia = document.getElementsByClassName('social_media')[0];
-		const name = document.getElementsByClassName('name')[0];
-		const height = screen.height;
-		soMedia.style.top = (window.scrollY) + 'px';
-		if (window.scrollY > height - 80) {
-			name.style.display = 'flex';
-			name.style.top = (window.scrollY) + 'px';
-		} else {
-			name.style.display = 'none';
-		}
+function MainApp() {
+	return (<>
 		
-	});
-	const playBtn = document.querySelector('[presentation=play]');
-	const audio = new Audio('presentation.wav');
-	playBtn.addEventListener('click', function () {
-		audio.play();
-	})
-	// Resume
-	const resBtn = document.querySelector("button[class=resume]");
-	resBtn.addEventListener('click', async function () {
-		window.open('Daniel_Rodriguez_Resume.pdf', '_blank')
-	});
-	startHeadAnimation();
-	let hidden = true;
-	// reveal hide 
-	const revealHideBtn = document.querySelector('.name button');
-	revealHideBtn.addEventListener('click', function (evn) {
-		if (hidden) {
-			window.removeEventListener('mousemove', tracker);
-			cont.style.clipPath = '';
-			revealHideBtn.innerHTML = 'HIDDE';
-			hidden = false;
-		} else {
-			window.addEventListener('mousemove', tracker);
-			revealHideBtn.innerHTML = 'REVEAL';
-			cont.style.clipPath = `circle(${400}px at ${300}px ${0}px)`;
-			hidden = true;
-		}
-	});
-}*/
+	</>)
+}
+
+window.onload = async function() {
+	addSkillListener();
+	ReactDOM.render(<MainApp/>, document.getElementById('head_container'));
+}
 
 function openSocialMedia(link) {
 	window.open(link, '_blank');
-} 
+}
 
 
 // Animation Section
@@ -156,7 +106,6 @@ const mouse = {
 }
 
 window.addEventListener('mousemove', (evn) => {
-	// console.log(evn);
 	mouse.x = evn.x;
 	mouse.y = evn.y;
 	for (let i = 0; i < 1; i++) {
@@ -165,7 +114,6 @@ window.addEventListener('mousemove', (evn) => {
 });
 
 window.addEventListener('click', (evn) => {
-	// console.log(evn);
 	mouse.x = evn.x;
 	mouse.y = evn.y;
 	for (let i = 0; i < 10; i++) {
@@ -201,30 +149,7 @@ class Particle {
 	}
 }
 
-function handleParticles() {
-	ctx.lineWidth = 0.5;
-	for (let i = 0; i < particleArray.length; i++) {
-		particleArray[i].update();
-		particleArray[i].draw();
-		for (let j = i; j < particleArray.length; j++) {
-			const dx = particleArray[i].x - particleArray[j].x;
-			const dy = particleArray[i].y - particleArray[j].y;
-			const distance = Math.sqrt(dx ** 2 + dy ** 2);
-			if (distance < 40) {
-				ctx.strokeStyle = particleArray[i].color;
-				ctx.beginPath()
-				ctx.moveTo(particleArray[i].x, particleArray[i].y);
-				ctx.lineTo(particleArray[j].x, particleArray[j].y);
-				ctx.stroke();
-				ctx.closePath();
-			}
-		}
-		if (particleArray[i].size <= 0.3) {
-			particleArray.splice(i, 1);
-			i--;
-		}
-	}
-}
+function 
 
 function animate() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -283,29 +208,7 @@ class Slider {
 		this.tabs[tabKey].container.style.display = 'block';
 
 		if (tabKey == 'about') {
-			const marginleft = Number(window.getComputedStyle(this.tabs.about.canvas).marginLeft.split('px')[0]);
-			this.tabs.about.canvas.width = this.tabs.about.canvas.getBoundingClientRect().width - marginleft;
-			this.tabs.about.canvas.height = this.tabs.about.canvas.getBoundingClientRect().height;
-			const res = await (await fetch('/skill_badges/')).text();
-			const regexp = /<script.+?</ig;
-			let match, files = [];
-			let counter = 0;
-			while ((match = regexp.exec(res)) != null && counter < 100) {
-				files.push(match.index);
-				counter++;
-			}
-			let badges = [];
-			for (let i = 3;  i < files.length; i++) {
-				let start = files[i];
-				let end = i == files.length - 1 ? res.length - 1 : files[i + 1];
-				const fileName = res.substring(start, end).split('"')[1];
-				badges.push(new SkillBadge(badges, this.tabs.about.canvas, fileName, this));
-			}
-			this.tabs.about.badges = badges;
-			if (this.tabs[tabKey].canvasContext == undefined) {
-				this.tabs[tabKey].canvasContext = this.tabs[tabKey].canvas.getContext('2d');
-				this.animateSkills();
-			}
+			console.log('render about')
 		}
 	}
 	async animateSkills() {
@@ -387,7 +290,6 @@ let MAX_DEFINE_NEAREST_CALLS = 100;
 let defineNearestPositionsCallCount = 0;
 
 function defineNearestPosition(existingPositions, width, height) {
-	// console.log('define nearest', existingPositions);
 	let MAX_TRIES = 300;
 	for (let tries=0; tries < MAX_TRIES; tries++) {
 		const newX = Math.random() * (width * 0.75) + width * 0.125;
@@ -409,7 +311,7 @@ class SkillBadge {
 	y
 	constructor(previous_badges, canvas, badgeFile, parentContext) {
 		this.index = previous_badges.length;
-		this.size = 30;
+		this.size = 60;
 		if (previous_badges.length == 0) {
 			this.x = Math.random() * (canvas.width * 0.75) + canvas.width * 0.125;
 			this.y = Math.random() * (canvas.height * 0.75) + canvas.height * 0.125;
@@ -421,37 +323,63 @@ class SkillBadge {
 		this.speedX = Math.random() * 2 - 1;
 		this.speedY = Math.random() * 2 - 1;
 		this.image = new Image();
-		this.image.src = `/skill_badges/${this.fileName}`;
+		this.image.src = `${window.location.origin}/skill_badges/${this.fileName}`;
 		this.particles = [];
 		for (let i = 0; i < Math.random() * 8; i++) {
 			this.particles.push(new RotatingParticle(this));
 		}
 	}
-	update() {
-		// this.x += this.speedX;
-		// this.y += this.speedY;
-		// if (this.x > this.parentContext.tabs.about.canvas.width - (this.size / 2) || this.x < this.size / 2) {
-		// 	this.speedX *= -1;
-		// }
-		// if (this.y > this.parentContext.tabs.about.canvas.height - (this.size / 2) || this.y < this.size / 2) {
-		// 	this.speedY *= -1;
-		// }
-	}
+
 	draw() {
-		// console.log(this);
 		const cctx = this.parentContext.tabs.about.canvasContext;
 		cctx.fillStyle = '#ffffff';
 		cctx.beginPath();
 		cctx.arc(this.x, this.y, 5, 0, Math.PI * 2, false);
 		cctx.fill();
 		cctx.closePath();
-		// cctx.drawImage(this.image, this.x - (this.size / 2), this.y - (this.size / 2), this.size, this.size);
+		cctx.drawImage(this.image, this.x - (this.size / 2), this.y - (this.size / 2), this.size, this.size);
 		for (let particle of this.particles) {
 			particle.update();
 			particle.draw();
-			// particle.connectParticles();
+
 		}
 	}
+}
+
+const SKILLS_BADGE = {
+	languages: {
+		Python: 'python.png',
+		Javascript: 'js.png',
+		C: 'c.png'
+	},
+	databases: {
+		Postgres: 'postgres.png',
+		Mysql: 'mysql.png',
+		Mssql: 'mssql.png',
+		MongoDb: 'mongodb.png'
+	}
+}
+
+function addSkillListener() {
+	const languages = document.getElementById('languages')
+	languages.addEventListener('mouseenter', (e) => {
+		const top = 62;
+		const left = 120;
+		for (const [key, value] of Object.entries(SKILLS_BADGE['languages'])) {
+			console.log(`${key}: ${value}`);
+			const objectHtml = `<div>${key}</div>`;
+			const objectNode = document.createElement('div');
+			objectNode.innerHTML = objectHtml;
+			const skills = document.getElementById('skill-badges');
+			skills.appendChild(objectNode);
+
+		}
+	})
+}
+
+function renderSkills(type) {
+
+	console.log(type)
 }
 
 const slider = new Slider();

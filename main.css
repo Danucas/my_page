@@ -236,7 +236,7 @@ p {
 
 #content_menu li:hover {
 	background-color: rgba(255, 255, 255, 0.815);
-	backdrop-filter: blur(20px);
+	backdrop-filter: blur(5px);
 	color: rgb(95, 64, 167);
 }
 
@@ -255,12 +255,11 @@ p {
 	display: flex;
 	z-index: 10;
 	border-radius: 0 18px 0 0;
-	padding-left: calc(50vw - 100px);
+	padding-left: calc(50vw - 85px);
 }
 .social_media button {
 	border: none;
 	background-color: transparent;
-	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 30px;
@@ -284,7 +283,7 @@ p {
 	width: 90vw;
 	margin-left: 5vw;
 	border-radius: 4px;
-	backdrop-filter: blur(10px);
+	backdrop-filter: blur(2px);
 }
 
 #about div>div {
@@ -298,4 +297,31 @@ p {
 	top: 0;
 	position: absolute;
 	margin-left: 5vw;
+}
+
+.skill-badges {
+	margin-left: 6vw;
+    position: relative;
+    width: 39vw !important;
+}
+
+.cluster {
+	position: absolute;
+	width: 80px;
+	max-width: 80px;
+	height: 80px;
+	max-height: 80px;
+	background-color: white;
+	color: #9900ff;
+	text-align: center;
+	align-items: center;
+	border-radius: 50%;
+	padding-top: 34px;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.cluster:hover {
+	background-color: #9900ff;
+	color: white;
 }
