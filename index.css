@@ -307,7 +307,7 @@ body {
 
 @media all and (max-width: 900px) {
     #container {
-        height: 95vh !important;
+        height: 88vh !important;
         width: 100vw !important;
     }
     .head-name {
@@ -347,6 +347,7 @@ body {
         margin-left: 14px;
     }
     .head-nav-bar {
+        height: 33vh;
         backdrop-filter: blur(10px) !important;
     }
     .nav-bar {
@@ -359,9 +360,9 @@ body {
 
     .about {
         max-width: 96vw !important;
-        max-height: 55vh;
+        max-height: 48vh;
         overflow-y: scroll;
-        left: 3vw !important;
+        left: 2vw !important;
         top: 12vh;
         padding-top: 20vh;
         grid-template-columns: 100% !important;
