@@ -306,17 +306,19 @@ body {
 }
 
 @media all and (max-width: 900px) {
-
+    #container {
+        height: 95vh;
+    }
     .head-name {
         max-width: 96vw;
         font-size: 12px !important;
-        margin-left: 4vw;
+        margin-left: 2vw;
     }
     .social-media {
-        padding-left: calc(50vw - 67px) !important;
+        padding-left: calc(48vw - 67px) !important;
     }
     #content_menu ul {
-        padding-left: 11vw !important;
+        padding-left: 9vw !important;
         padding-bottom: 0 !important;
     }
     #content_menu li {
@@ -333,7 +335,7 @@ body {
     }
 
     .social-media-nav-bar {
-        left: calc(50% - 16vw);
+        left: calc(50% - 17vw);
         top: 165px;
         width: 33vw;
     }
@@ -356,7 +358,7 @@ body {
 
     .about {
         max-width: 96vw !important;
-        max-height: 60vh;
+        max-height: 55vh;
         overflow-y: scroll;
         left: 3vw !important;
         top: 12vh;
