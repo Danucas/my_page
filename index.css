@@ -307,7 +307,8 @@ body {
 
 @media all and (max-width: 900px) {
     #container {
-        height: 95vh;
+        height: 95vh !important;
+        width: 100vw !important;
     }
     .head-name {
         max-width: 96vw;
