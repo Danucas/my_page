@@ -243,8 +243,8 @@ class About extends React.Component {
         if (this.state.skills) {
             skills = this.state.skills.map((badge) => {
 
-                // const img = `url(/my_page/skill_badges/${badge.img})`;
-                const img = `url(/skill_badges/${badge.img})`;
+                const img = `url(/my_page/skill_badges/${badge.img})`;
+                // const img = `url(/skill_badges/${badge.img})`;
                 return (<div key={badge.name} className="child tooltip" style={{
                     top: badge.top,
                     left: badge.left,
