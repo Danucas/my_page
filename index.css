@@ -255,6 +255,7 @@ body {
     padding-top: 34px;
     font-size: 12px;
     background-color: rgb(255, 255, 255);
+    border: 2px solid black
 }
 
 .child h1 {

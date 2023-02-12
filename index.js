@@ -190,7 +190,7 @@ class About extends React.Component {
             for (let skill of skills) {
                 let origin = {...SKILLS_BADGE[badge].position};
                 let p = {...SKILLS_BADGE[badge].position};
-                let distance = window.screen.width <= 900 ? 100 : 150;
+                let distance = window.screen.width <= 900 ? 100 : 130;
                 p.y = p.y - distance;
                 let rx = Math.cos(sumAngle) * (p.x - origin.x) -(Math.sin(sumAngle)) * (p.y - origin.y) + origin.x;
                 let ry = Math.sin(sumAngle) * (p.x - origin.x) +Math.cos(sumAngle) * (p.y - origin.y) + origin.y;
