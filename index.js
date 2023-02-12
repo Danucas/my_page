@@ -21,7 +21,7 @@ const SKILLS_BADGE = {
                 img: 'python.png',
                 top: '123px',
                 left: '237px',
-                exp: 4
+                exp: 7
             },
             {
                 name: 'Javascript',
@@ -135,7 +135,7 @@ const SKILLS_BADGE = {
                 img: 'linux.png',
                 top: '110px',
                 left: '300px',
-                exp: 5
+                exp: 7
             }
         ]
     }
@@ -163,10 +163,8 @@ class Menu extends React.Component {
         return (
             <div id="content_menu">
 			    <ul>
-				    <li onClick={()=>this.loadContent('home')}>Home</li>
 				    <li onClick={()=>this.loadContent('about')}>About me</li>
 				    <li onClick={()=>this.loadContent('portfolio')}>Portfolio</li>
-				    <li onClick={()=>this.loadContent('contact')}>Contact</li>
 			    </ul>
 		    </div>
         )
@@ -176,8 +174,10 @@ class Menu extends React.Component {
 class About extends React.Component {
     constructor(props) {
         super(props);
+        this.badgesContainerRef = React.createRef();
         this.state = {
-            skills: null
+            skills: null,
+            sized: false
         }
     }
 
@@ -190,7 +190,8 @@ class About extends React.Component {
             for (let skill of skills) {
                 let origin = {...SKILLS_BADGE[badge].position};
                 let p = {...SKILLS_BADGE[badge].position};
-                p.y = p.y - 150;
+                let distance = window.screen.width <= 900 ? 100 : 150;
+                p.y = p.y - distance;
                 let rx = Math.cos(sumAngle) * (p.x - origin.x) -(Math.sin(sumAngle)) * (p.y - origin.y) + origin.x;
                 let ry = Math.sin(sumAngle) * (p.x - origin.x) +Math.cos(sumAngle) * (p.y - origin.y) + origin.y;
                 sumAngle = sumAngle + angle;
@@ -201,12 +202,49 @@ class About extends React.Component {
         this.setState(()=>({skills: skills}))
     }
 
+    async loadDimensions() {
+        await sleep(600);
+        if (!this.state.sized) {
+            const container = this.badgesContainerRef.current;
+
+            if(window.screen.width <= 900){
+                console.log('mobile render')
+                const dimensions = container.getBoundingClientRect();
+                SKILLS_BADGE.languages.position.x = (dimensions.width / 2) - 20;
+                SKILLS_BADGE.languages.position.y = ((dimensions.height / 4) * 1) - 50;
+
+                SKILLS_BADGE.databases.position.x = (dimensions.width / 2) - 20;
+                SKILLS_BADGE.databases.position.y = ((dimensions.height / 4) * 2) - 50;
+
+                SKILLS_BADGE.frameworks.position.x = (dimensions.width / 2) - 20;
+                SKILLS_BADGE.frameworks.position.y = ((dimensions.height / 4) * 3) - 50;
+            } else {
+                console.log('desktop render')
+                console.log(window.screen.width)
+                const dimensions = container.getBoundingClientRect();
+                SKILLS_BADGE.languages.position.x = ((dimensions.width / 4) * 2) - 20;
+                SKILLS_BADGE.languages.position.y = (dimensions.height / 5) * 1;
+
+                SKILLS_BADGE.databases.position.x = ((dimensions.width / 4) * 3) - 20;
+                SKILLS_BADGE.databases.position.y = (dimensions.height / 5) * 2;
+
+                SKILLS_BADGE.frameworks.position.x = ((dimensions.width / 4) * 1) - 20;
+                SKILLS_BADGE.frameworks.position.y = (dimensions.height / 5) * 3;
+            }
+
+            this.setState((p)=> ({sized: true}));
+
+        }
+    }
+
     render() {
+        this.loadDimensions();
         let skills;
         if (this.state.skills) {
             skills = this.state.skills.map((badge) => {
 
-                const img = `url(/my_page/skill_badges/${badge.img})`;
+                // const img = `url(/my_page/skill_badges/${badge.img})`;
+                const img = `url(/skill_badges/${badge.img})`;
                 return (<div key={badge.name} className="child tooltip" style={{
                     top: badge.top,
                     left: badge.left,
@@ -215,63 +253,91 @@ class About extends React.Component {
             });
         }
         return (
-            <div className="about">
-                <div className="profile-description">
-                    <h2>About me</h2>
-                    <img src="profile.jpeg"/>
-                    <p>I'm a Full-Stack Software Engineer based on Cali, Colombia.
-                        <br></br>
-                        <br></br>
-                        My Goal is to deliver the best solutions for every day requirements.
-                        <br></br>
-                        <br></br>
-                        I've been working with ETL processes as <span className="accent">DataEngineer</span>, Legacy Upgrades on the <span className="accent">OpenSource community</span>, and some fun with GPT-3 and Stable diffusion.
-
-                    </p>
-                    <button className="resume">View Resume</button>
+            <>
+                <div className="about">
+                    <div className="profile-description">
+                        <h2>About me</h2>
+                        <img src="profile.jpeg"/>
+                        <p>I'm a Full-Stack Software Engineer based on Cali, Colombia.
+                            <br></br>
+                            <br></br>
+                            My Goal is to deliver the best solutions for every day requirements.
+                            <br></br>
+                            <br></br>
+                            I've been working with ETL processes as <span className="accent">DataEngineer</span>
+                            <br></br>
+                            Contributions to the <span className="accent">OpenSource community</span>
+                            <br></br>
+                            And some fun with GPT-3 and Stable diffusion.
+                            <br></br>
+                            My Values:
+                        </p>
+                        <div className="soft-skills-container">
+                            <h1 className="soft-skill">Team work</h1>
+                            <h1 className="soft-skill">Creativity</h1>
+                            <h1 className="soft-skill">Attention to detail</h1>
+                            <h1 className="soft-skill">Flexibility</h1>
+                            <h1 className="soft-skill">Problem Solving</h1>
+                            <h1 className="soft-skill">Work ethic</h1>
+                        </div>
+                        <button className="resume">View Resume</button>
+                    </div>
+                    <div ref={this.badgesContainerRef} id="skill-badges" className="skill-badges">
+                        <div id="languages" className="cluster" style={
+                            {
+                                top: SKILLS_BADGE.languages.position.y - 20,
+                                left: SKILLS_BADGE.languages.position.x - 20,
+                            }
+                        } onMouseEnter={(e)=>this.renderSkills('languages')} onMouseLeave={(e)=>this.renderSkills('languages')}>
+                            Languages
+                        </div>
+                        <div className="cluster" style={
+                            {
+                                top: SKILLS_BADGE.databases.position.y - 20,
+                                left: SKILLS_BADGE.databases.position.x - 20,
+                            }
+                        } onMouseEnter={()=>this.renderSkills('databases')}>
+                            Databases
+                        </div>
+                        <div className="cluster" style={
+                            {
+                                top: SKILLS_BADGE.frameworks.position.y - 20,
+                                left: SKILLS_BADGE.frameworks.position.x - 20,
+                            }
+                        } onMouseEnter={()=>this.renderSkills('frameworks')}>
+                            Frameworks & Tools
+                        </div>
+                        {skills}
+                    </div>
                 </div>
-                <div id="skill-badges" className="skill-badges">
-                    <div id="languages" className="cluster" style={
-                        {
-                            top: SKILLS_BADGE.languages.position.y - 20,
-                            left: SKILLS_BADGE.languages.position.x - 20,
-                        }
-                    } onMouseEnter={(e)=>this.renderSkills('languages')} onMouseLeave={(e)=>this.renderSkills('languages')}>
-                        Languages
-                    </div>
-                    <div className="cluster" style={
-                        {
-                            top: SKILLS_BADGE.databases.position.y - 20,
-                            left: SKILLS_BADGE.databases.position.x - 20,
-                        }
-                    } onMouseEnter={()=>this.renderSkills('databases')}>
-                        Databases
-                    </div>
-                    <div className="cluster" style={
-                        {
-                            top: SKILLS_BADGE.frameworks.position.y - 20,
-                            left: SKILLS_BADGE.frameworks.position.x - 20,
-                        }
-                    } onMouseEnter={()=>this.renderSkills('frameworks')}>
-                        Frameworks & Tools
-                    </div>
-                    {skills}
-                </div>
-            </div>
+                <WelcomeHeader navBar={true}/>
+            </>
         )
     }
 }
 
 
 class WelcomeHeader extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            navBar: props.navBar
+        }
+    }
     render() {
+        let className = this.state.navBar ? "nav-bar" : "head-name";
+        let containerClass = this.state.navBar ? "head-nav-bar" : "head-container";
+        let socialMediaClass = this.state.navBar ? "social-media-nav-bar" : "social-media";
         return (
-            <div>
-                <div id="head_name">
+            <div className={containerClass}>
+                <div className={className}>
                     <h1>Hello, I'm <span style={{color: "#9c7ee2"}}>Daniel Rodriguez.</span>
                     <br></br>Software Engineer</h1>
+                    {this.state.navBar && (
+                        <p>dnart.tech@gmail.com</p>
+                    )}
                 </div>
-                <div className="social_media">
+                <div className={socialMediaClass}>
                     <button style={
                         {
                             filter: "invert()",
@@ -363,9 +429,18 @@ class MainApp extends React.Component {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         this.setState(()=>({context: ctx}));
+
         window.addEventListener('mousemove', (evn) => {
             mouse.x = evn.x;
             mouse.y = evn.y;
+            for (let i = 0; i < 1; i++) {
+                particleArray.push(new Particle(COLORS.track, 5, 4));
+            }
+        });
+
+        window.addEventListener('touchmove', (evn) => {
+            mouse.x = evn.touches[0].clientX;
+            mouse.y = evn.touches[0].clientY;
             for (let i = 0; i < 1; i++) {
                 particleArray.push(new Particle(COLORS.track, 5, 4));
             }
@@ -377,11 +452,6 @@ class MainApp extends React.Component {
             for (let i = 0; i < 10; i++) {
                 particleArray.push(new Particle(COLORS.clicks, 9, 12));
             }
-        });
-
-        window.addEventListener('resize', (evn)=> {
-            // canvas.width = evn.target.innerWidth;
-            // canvas.height = evn.target.innerHeight;
         });
     }
 

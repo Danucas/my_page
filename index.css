@@ -7,8 +7,12 @@ body {
     background-color: black;
 }
 
+:root {
+    --accent: rgb(156, 126, 226);
+}
+
 .accent {
-    color: rgb(156, 126, 226);
+    color: var(--accent);
 }
 #container {
     top: 0;
@@ -35,7 +39,7 @@ body {
 	background-color: rgb(0, 0, 0);
 }
 
-#head_name {
+.head-name {
 	margin-top: calc(50vh - 80px);
 	font-size: 30px !important;
 	position: relative;
@@ -45,7 +49,32 @@ body {
 	text-shadow: 0px 0px 20px black;
 }
 
-.social_media {
+.nav-bar {
+    width: calc(100vw - 48px);
+    text-align: left;
+    color: white;
+    text-shadow: 0px 0px 20px black;
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    font-size: 12px;
+}
+
+.nav-bar p {
+    width: 200px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.431);
+}
+.nav-bar h1 {
+    margin: 0;
+}
+
+.social-media {
 	width: 100vw;
 	align-content: center;
 	display: flex;
@@ -53,7 +82,18 @@ body {
 	border-radius: 0 18px 0 0;
 	padding-left: calc(50vw - 85px);
 }
-.social_media button {
+
+.social-media-nav-bar {
+	width: 11vw;
+    position: absolute;
+    left: 17px;
+    top: 126px;
+    display: flex;
+    z-index: 10;
+    border-radius: 0 18px 0 0;
+}
+
+.social-media button, .social-media-nav-bar button {
 	border: none;
 	background-color: transparent;
 	background-position: center;
@@ -64,7 +104,18 @@ body {
 	cursor: pointer;
 	outline: none;
 }
-.social_media button:hover {
+
+.social-media-nav-bar button{
+    width: 22px;
+    height: 22px;
+    background-size: 16px;
+    margin-left: 12px;
+}
+.social-media-nav-bar button:hover {
+    background-size: 18px;
+}
+
+.social-media button:hover {
 	background-size: 36px;
 }
 
@@ -79,7 +130,7 @@ body {
 	bottom: 0;
 	margin: 0;
 	padding: 0;
-	padding-left: 20vw;
+	padding-left: 34vw;
 	display: flex;
 	padding-bottom: 40px;
 }
@@ -108,7 +159,7 @@ body {
     top: 6vw;
     left: 10vw;
     display: grid;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(3px);
     grid-template-columns: 40vw 40vw;
     background-color: transparent;
 }
@@ -118,9 +169,29 @@ body {
 .about p {
 	color: white;
 	width: 80%;
+    margin-left: 10%;
 	font-size: 18px;
-	text-align: justify;
+	text-align: center;
 	text-justify: inter-word;
+}
+
+.soft-skills-container {
+    display: inline-block;
+    max-width: 60%;
+    margin-left: 20%;
+}
+
+.soft-skill {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 12px;
+    margin: 2px;
+    background-color: var(--accent);
+}
+
+.profile-description {
+    position: relative;
 }
 
 .profile-description img {
@@ -144,17 +215,18 @@ body {
 	height: 80px;
 	max-height: 46px;
 	background-color: white;
-	color: #9900ff;
+	color: var(--accent);
 	text-align: center;
 	align-items: center;
 	border-radius: 50%;
-	padding-top: 34px;
+	padding-top: 32px;
 	font-size: 12px;
+    font-weight: bold;
 	cursor: pointer;
 }
 
 .cluster:hover {
-	background-color: #9900ff;
+	background-color: var(--accent);
 	color: white;
 }
 
@@ -164,6 +236,7 @@ body {
 }
 
 .child {
+    z-index: 10;
     animation-name: cluster-animation;
     animation-duration: 1600ms;
     animation-direction: normal;
@@ -181,7 +254,7 @@ body {
     border-radius: 50%;
     padding-top: 34px;
     font-size: 12px;
-    background-color: rgba(255, 255, 255, 0.887);
+    background-color: rgb(255, 255, 255);
 }
 
 .child h1 {
@@ -191,6 +264,7 @@ body {
     position: absolute;
     bottom: -34px;
     left: -53px;
+    text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
 }
 
 .tooltip {
@@ -202,7 +276,7 @@ body {
     visibility: hidden;
     width: 80px;
     background-color: white;
-    color: #9900ff;
+    color: var(--accent);
     text-align: center;
     border-radius: 6px;
     padding: 5px 3px;
@@ -214,4 +288,86 @@ body {
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
+}
+
+.resume {
+    cursor: pointer;
+    position: absolute;
+    top: 278px;
+    left: calc(50% - 63px);
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    font-family: 'Homemade Apple', cursive;
+    color: black;
+}
+.resume:hover {
+    color: var(--accent);
+}
+
+@media all and (max-width: 900px) {
+
+    .head-name {
+        max-width: 96vw;
+        font-size: 12px !important;
+        margin-left: 4vw;
+    }
+    .social-media {
+        padding-left: calc(50vw - 67px) !important;
+    }
+    #content_menu ul {
+        padding-left: 11vw !important;
+        padding-bottom: 0 !important;
+    }
+    #content_menu li {
+        width: 40vw;
+        font-size: 12px;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+
+    .head-container {
+        height: 33vh;
+        position: relative;
+        backdrop-filter: blur(0px);
+    }
+
+    .social-media-nav-bar {
+        left: calc(50% - 16vw);
+        top: 165px;
+        width: 33vw;
+    }
+    .social-media-nav-bar button {
+        width: 22px;
+        height: 22px;
+        background-size: 18px;
+        margin-left: 14px;
+    }
+    .head-nav-bar {
+        backdrop-filter: blur(10px) !important;
+    }
+    .nav-bar {
+        text-align: center;
+    }
+
+    .nav-bar p {
+        margin-left: calc(50% - 100px);
+    }
+
+    .about {
+        max-width: 96vw !important;
+        max-height: 60vh;
+        overflow-y: scroll;
+        left: 3vw !important;
+        top: 12vh;
+        padding-top: 20vh;
+        grid-template-columns: 100% !important;
+    }
+    .about p {
+        text-align: justify;
+    }
+    .skill-badges {
+        height: 140vh;
+        width: 100%;
+    }
 }
